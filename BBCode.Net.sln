@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBCode.Net", "BBCode.Net\BBCode.Net.csproj", "{0F4ECA2D-2505-4B85-8012-DED3234818AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBCode.Net.Tests", "BBCode.Net.Tests\BBCode.Net.Tests.csproj", "{BF092625-F391-4D8A-A76F-4CEC81DEA5B8}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F4ECA2D-2505-4B85-8012-DED3234818AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4ECA2D-2505-4B85-8012-DED3234818AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4ECA2D-2505-4B85-8012-DED3234818AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4ECA2D-2505-4B85-8012-DED3234818AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF092625-F391-4D8A-A76F-4CEC81DEA5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF092625-F391-4D8A-A76F-4CEC81DEA5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF092625-F391-4D8A-A76F-4CEC81DEA5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF092625-F391-4D8A-A76F-4CEC81DEA5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
