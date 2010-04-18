@@ -1,4 +1,4 @@
-﻿namespace LanLordz.SiteTools
+﻿namespace BBCode
 {
     using System;
 

@@ -1,4 +1,4 @@
-﻿namespace LanLordz.SiteTools
+﻿namespace BBCode
 {
     using System;
     using System.Collections.Generic;
@@ -10,10 +10,11 @@
     public sealed class BBCodeInterpreter
     {
         private readonly Regex validUrlSchemes = new Regex("^(http|https|ftp)://");
+        private readonly Regex tagParser = new Regex(@"\A\[(?<endflag>/?)(?<tagname>\w+)(?:(?<paramseperator>=)(?<parameter>[^\r\n\]]*))?]\z", RegexOptions.Compiled);
 
-        private List<BBCodeTag> tags = new List<BBCodeTag>();
-        private Dictionary<string, string> replacements = new Dictionary<string, string>();
-        private Dictionary<string, string> literalReplacements = new Dictionary<string, string>();
+        private readonly List<BBCodeTag> tags = new List<BBCodeTag>();
+        private readonly Dictionary<string, string> replacements = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> literalReplacements = new Dictionary<string, string>();
 
         public BBCodeInterpreter(XmlDocument configuration)
         {
@@ -157,12 +158,10 @@
 
         private string ProcessTokens(Queue<string> tokens)
         {
-            Regex tagParser = new Regex(@"\A\[(?<endflag>/?)(?<tagname>\w+)(?:(?<paramseperator>=)(?<parameter>[^\r\n\]]*))?]\z", RegexOptions.Compiled);
+            var formatted = string.Empty;
+            var literalContents = string.Empty;
 
-            string formatted = string.Empty;
-            string literalContents = string.Empty;
-
-            Stack<Stack<BBCodeTagContext>> stack = new Stack<Stack<BBCodeTagContext>>();
+            var stack = new Stack<Stack<BBCodeTagContext>>();
             stack.Push(new Stack<BBCodeTagContext>());
 
             while (tokens.Count > 0)
@@ -173,9 +172,9 @@
                 string token = tokens.Dequeue();
 
                 // Match the token against the tag validation rules.
-                Match match = tagParser.Match(token);
+                Match match = this.tagParser.Match(token);
 
-                // If our match failed the token is a literal string.
+                // If our match failed, the token is a literal string.
                 if (!match.Success)
                 {
                     if (context.Count > 0 && context.Peek().Tag.IsLiteral)
