@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BBCode.cs" />
+    <Compile Include="BBCodeInterpreter.cs" />
+    <Compile Include="BBCodeTagTypes.cs" />
+    <Compile Include="BBCodeTag.cs" />
+    <Compile Include="BBCodeTagContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
