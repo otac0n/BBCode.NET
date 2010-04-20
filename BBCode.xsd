@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="literalString">
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="preserve"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tagType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="literal" />
+            <xs:enumeration value="newcontext" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tagName">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z][A-Z0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tag">
+        <xs:sequence>
+            <xs:element name="open" type="literalString" />
+            <xs:element name="close" type="literalString" />
+        </xs:sequence>
+        <xs:attribute name="name" use="required" type="tagName" />
+        <xs:attribute name="type" use="required" type="tagType" />
+        <xs:attribute name="parameter" type="xs:boolean" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="tagSequence">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="tag" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="replacement">
+        <xs:sequence>
+            <xs:element name="oldvalue" type="literalString" />
+            <xs:element name="newvalue" type="literalString" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="replacementSequence">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="replacement" type="replacement" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="bbcode">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tags" type="tagSequence" />
+                <xs:element name="literalReplacements" type="replacementSequence" />
+                <xs:element name="replacements" type="replacementSequence" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

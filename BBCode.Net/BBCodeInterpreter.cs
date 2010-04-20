@@ -117,9 +117,9 @@
 
         private string FormatNormal(string literalText)
         {
-            string formatted = Microsoft.Security.Application.AntiXss.HtmlEncode(literalText);
+            var formatted = this.SanitizeAsText(literalText);
 
-            foreach (string replace in this.replacements.Keys)
+            foreach (var replace in this.replacements.Keys)
             {
                 formatted = Regex.Replace(formatted, replace, this.replacements[replace], RegexOptions.Multiline);
             }
@@ -129,9 +129,9 @@
 
         private string FormatLiteral(string literalText)
         {
-            string formatted = Microsoft.Security.Application.AntiXss.HtmlEncode(literalText);
+            var formatted = this.SanitizeAsText(literalText);
 
-            foreach (string replace in this.literalReplacements.Keys)
+            foreach (var replace in this.literalReplacements.Keys)
             {
                 formatted = Regex.Replace(formatted, replace, this.literalReplacements[replace]);
             }
@@ -139,7 +139,12 @@
             return formatted;
         }
 
-        private string SanitizeUrl(string url)
+        private string SanitizeAsText(string text)
+        {
+            return Microsoft.Security.Application.AntiXss.HtmlEncode(text);
+        }
+
+        private string SanitizeAsUrl(string url)
         {
             var ret = url.TrimStart();
 
