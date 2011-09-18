@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBCode.Net", "BBCode.Net\BBCode.Net.csproj", "{0F4ECA2D-2505-4B85-8012-DED3234818AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBCode.Net.Tests", "BBCode.Net.Tests\BBCode.Net.Tests.csproj", "{BF092625-F391-4D8A-A76F-4CEC81DEA5B8}"
